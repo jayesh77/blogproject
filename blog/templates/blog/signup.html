@@ -1,0 +1,22 @@
+{% extends 'blog/basic.html' %}
+{% block title %}SignUp{% endblock %}
+{% block content %}
+    <div class="col-sm-5 mt-4">
+        <form method="post">
+            {% csrf_token %}
+            {% for error in form.non_field_errors %}
+                <div class="alert alert-danger">{{ error }}</div>
+            {% endfor %}
+            {% for fm in form %}
+                <div class="form-group">
+                    {{ fm.label_tag }}{{ fm }}
+
+                    <small class="text-warning"> {{ fm.errors|striptags }}</small>
+                </div>
+            {% endfor %}
+            <input type="submit" class="btn btn-primary mt-2" name="SignUP">
+        </form>
+    </div>
+{% endblock %}
+
+
